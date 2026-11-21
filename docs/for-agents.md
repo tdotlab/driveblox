@@ -18,3 +18,13 @@ Use the `driveblox` CLI; do not guess at timing, sync on game state.
 ```
 
 Have the game publish simple attributes (a stage name, a score, a flag) on a server-side instance. They make waits and assertions one line each, and no screenshots are needed.
+
+## If your agent can't run Studio at all
+
+Studio only runs on Windows and macOS. An agent on Linux, or in a headless VM, can't host it, and that's fine: it can still do the writing while someone else runs the game. Hand over three things in the repo:
+
+1. The Luau source, laid out so it builds into a place without hand-editing.
+2. A game that publishes simple state as attributes on a server-side instance (a stage name, a score, a flag), so tests can wait on them.
+3. A `tests/*.batch` file or a short Python script using `from driveblox import Studio` that plays the game and asserts on those attributes. See `examples/` for the pattern.
+
+The person with Studio pulls the repo, opens the place, runs `driveblox doctor --input`, then the batch file, and sends back the output. Exit codes tell you what happened: 0 passed, 1 a tool error or a timed-out wait, 3 Studio wasn't reachable.
