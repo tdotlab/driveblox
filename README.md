@@ -144,6 +144,8 @@ export WINEPREFIX=/path/to/prefix
 driveblox doctor
 ```
 
+Studio on a different machine than the agent is the more realistic setup for a Linux or headless agent: the proxy talks to Studio over localhost, so driveblox has to run on the machine that runs Studio. Have the agent reach it over SSH, for example `ssh my-windows-box driveblox play start`, or run whole batch files there. This is untested, and one caveat is certain: a non-interactive SSH session has no desktop, so `driveblox focus` and real input focus will not work from it. Check with `driveblox doctor --input` over that same SSH route before trusting any input script.
+
 `driveblox focus` is Windows-only. On X11 you can try restoring viewport focus with xdotool, for example `xdotool search --name "Roblox Studio" windowactivate --sync click 1`, then confirm with `driveblox doctor --input`. If you get Linux working, a note on what you did would be very welcome (see Contributing).
 
 ## Security
