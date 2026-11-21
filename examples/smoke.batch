@@ -1,0 +1,9 @@
+# One connection, many commands: driveblox batch examples/smoke.batch
+# Lines are driveblox commands without the program name. '#' starts a comment.
+state
+play start
+wait "game.Players.LocalPlayer and game.Players.LocalPlayer.Character" -d client --timeout 30
+lua -d server -c "return #game.Players:GetPlayers()"
+key hold e 0.4
+console -n 20 --grep "error"
+play stop

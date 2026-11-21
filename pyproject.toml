@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "driveblox"
+version = "0.1.0"
+description = "Drive Roblox Studio from the shell or Python through its built-in MCP server."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = []
+keywords = ["roblox", "roblox-studio", "mcp", "cli", "automation", "testing", "luau"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Testing",
+]
+
+[project.urls]
+Homepage = "https://github.com/tdotlab/driveblox"
+Issues = "https://github.com/tdotlab/driveblox/issues"
+
+[project.scripts]
+driveblox = "driveblox.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
